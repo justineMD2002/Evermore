@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/home"
+            android:icon="@drawable/icon_home"
+            android:title="Home"/>
+        <item android:id="@+id/calc"
+            android:icon="@drawable/icon_calc"
+            android:title="IV Calculator"/>
+    </group>
+    <item android:title="Contact Us">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/email"
+                    android:icon="@drawable/icon_mail"
+                    android:title="Email"/>
+                <item android:id="@+id/phone"
+                    android:icon="@drawable/icon_phone"
+                    android:title="Phone"/>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Actions">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/logout"
+                    android:icon="@drawable/icon_logout"
+                    android:title="Log out"/>
+            </group>
+        </menu>
+    </item>
+</menu>

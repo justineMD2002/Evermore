@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "837044111413",
+    "project_id": "evermore-d5dad",
+    "storage_bucket": "evermore-d5dad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837044111413:android:ff0e6bd8ec95aa8965497c",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837044111413-01h03kdnljfr45qbj3pfrohcb6qjsa4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9jRVyxDoUQFnEt3c_DWMCrVlfQMtDPpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837044111413-01h03kdnljfr45qbj3pfrohcb6qjsa4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837044111413:android:48fa7780a1a6373b65497c",
+        "android_client_info": {
+          "package_name": "com.example.evermore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837044111413-01h03kdnljfr45qbj3pfrohcb6qjsa4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9jRVyxDoUQFnEt3c_DWMCrVlfQMtDPpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837044111413-01h03kdnljfr45qbj3pfrohcb6qjsa4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
