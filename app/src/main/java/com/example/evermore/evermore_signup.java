@@ -74,25 +74,47 @@ public class evermore_signup extends AppCompatActivity {
         pass = findViewById(R.id.editTextPassword);
 
         btnSignup.setOnClickListener(view -> {
-            mAuth.createUserWithEmailAndPassword(username.getText().toString(), pass.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // User has been created in Firebase Authentication, now register in Firestore
-                                registerUser(first.getText().toString(),
-                                        last.getText().toString(),
-                                        dob.getText().toString(), course);
-
-                                Toast.makeText(evermore_signup.this, "Account created.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(evermore_signup.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+            String email = username.getText().toString();
+            String password = pass.getText().toString();
+            String firstname = first.getText().toString();
+            String lastname = last.getText().toString();
+            String birthdate = dob.getText().toString();
+            try {
+                if (email.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || birthdate.isEmpty()) {
+                    throw new IllegalArgumentException("Email or password cannot be empty.");
+                }
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // User has been created in Firebase Authentication, now register in Firestore
+                                    try {
+                                        registerUser(firstname, lastname, birthdate, course);
+                                    }catch (Exception e) {
+                                        Toast.makeText(evermore_signup.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                                        first.setText("");
+                                        last.setText("");
+                                        dob.setText("");
+                                        username.setText("");
+                                        pass.setText("");
+                                    }
+                                    Toast.makeText(evermore_signup.this, "Account created.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    username.setText("");
+                                    pass.setText("");
+                                    first.setText("");
+                                    last.setText("");
+                                    dob.setText("");
+                                    Toast.makeText(evermore_signup.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+            } catch (IllegalArgumentException e) {
+                Toast.makeText(evermore_signup.this, "Please fill all the fields.", Toast.LENGTH_SHORT).show();
+            }
         });
-
     }
 
     protected void registerUser(String first, String last, String dob, String course) {

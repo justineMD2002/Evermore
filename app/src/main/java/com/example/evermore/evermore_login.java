@@ -65,21 +65,28 @@ public class evermore_login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btn_login);
 
         btnLogin.setOnClickListener(view -> {
-            mAuth.signInWithEmailAndPassword(username.getText().toString(), pass.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(evermore_login.this, "Login Successful.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(evermore_login.this, Home.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(evermore_login.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+            String email = username.getText().toString();
+            String password = pass.getText().toString();
+
+            try {
+                if (email.isEmpty() || password.isEmpty()) throw new IllegalArgumentException("Email or password cannot be empty.");
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(evermore_login.this, "Login Successful.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(evermore_login.this, Home.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(evermore_login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+            } catch (IllegalArgumentException e) {
+                Toast.makeText(evermore_login.this, "Please fill all the fields.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

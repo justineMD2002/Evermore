@@ -145,6 +145,8 @@ public class Home extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.calc:
+                        intent = new Intent(Home.this, Calc_iv.class);
+                        startActivity(intent);
                         break;
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
