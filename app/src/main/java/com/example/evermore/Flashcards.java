@@ -127,7 +127,7 @@ public class Flashcards extends AppCompatActivity {
                     tvCtr.setText(String.valueOf(count));
 
                     sec_card_front.setText(arrayList.get(count-1).getQuestion());
-                    sec_card_back.setText((arrayList.get(count-1).getAnswer()) ? "True" : "False");
+                    sec_card_back.setText((arrayList.get(count-1).getAnswer()));
 
                     AnimatorSet slideAnimation = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.slide_to_right);
                     slideAnimation.setTarget(cardView);
@@ -158,7 +158,7 @@ public class Flashcards extends AppCompatActivity {
                     tvCtr.setText(String.valueOf(count));
 
                     sec_card_front.setText(arrayList.get(count-1).getQuestion());
-                    sec_card_back.setText((arrayList.get(count-1).getAnswer()) ? "True" : "False");
+                    sec_card_back.setText((arrayList.get(count-1).getAnswer()));
 
                     AnimatorSet slideAnimation = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.slide_to_left);
                     slideAnimation.setTarget(cardView);
@@ -202,7 +202,7 @@ public class Flashcards extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String question = document.getString("question");
-                                Boolean answer = document.getBoolean("ans"); // retrieve as Boolean
+                                String answer = document.getString("ans");
                                 Model_Questionnaire m = new Model_Questionnaire(question, answer);
                                 questionnaires.add(m);
                             }
@@ -218,7 +218,7 @@ public class Flashcards extends AppCompatActivity {
         arrayList = new ArrayList<>(questionnaires);
         if (!arrayList.isEmpty() && arrayList.size() > 1) {
             sec_card_front.setText(arrayList.get(0).getQuestion());
-            sec_card_back.setText((arrayList.get(0).getAnswer()) ? "True" : "False");
+            sec_card_back.setText((arrayList.get(0).getAnswer()));
         } else {
             // Handle case where no documents are found in the collection
         }

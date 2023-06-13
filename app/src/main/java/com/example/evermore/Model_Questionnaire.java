@@ -2,9 +2,9 @@ package com.example.evermore;
 
 public class Model_Questionnaire {
     private String question;
-    private boolean answer;
+    private String answer;
 
-    public Model_Questionnaire(String question, boolean answer) {
+    public Model_Questionnaire(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }
@@ -17,11 +17,11 @@ public class Model_Questionnaire {
         this.question = question;
     }
 
-    public boolean getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(boolean answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 }
