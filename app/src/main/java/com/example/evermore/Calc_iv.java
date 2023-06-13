@@ -41,20 +41,17 @@ public class Calc_iv extends AppCompatActivity {
                 tm = ml / r;
                 rate.setText("Infusion rate: " + String.format("%.2f", r));
                 time.setText("Infusion time: " + String.format("%.2f", tm));
-            } catch(Exception a) {
-                Toast.makeText(this, "Invalid Input", Toast.LENGTH_SHORT).show();
-                vol.setText("");
-                hrs.setText("");
-                rate.setText("");
-                time.setText("");
+            } catch(IllegalArgumentException i) {
+                Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
+                clearCalc();
+            } catch (ArithmeticException a) {
+                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                clearCalc();
             }
         });
 
         clear.setOnClickListener(view -> {
-            vol.setText("");
-            hrs.setText("");
-            rate.setText("");
-            time.setText("");
+            clearCalc();
         });
     }
     @Override
@@ -66,5 +63,11 @@ public class Calc_iv extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void clearCalc() {
+        vol.setText("");
+        hrs.setText("");
+        rate.setText("");
+        time.setText("");
     }
 }
