@@ -36,7 +36,7 @@ public class Flashcards extends AppCompatActivity {
     private AnimatorSet back_anim;
     private CardView cardView, cardview2;
     private boolean isFront = true;
-    TextView tvCtr, first_card_front, first_card_back, sec_card_front, sec_card_back;
+    TextView tvCtr, first_card_front, first_card_back, sec_card_front, sec_card_back, total;
     int count = 1;
     ImageView back, next;
     Intent intent;
@@ -53,6 +53,7 @@ public class Flashcards extends AppCompatActivity {
         cardView = findViewById(R.id.flashcard);
         cardview2 = findViewById(R.id.flashcard2);
         intent = getIntent();
+        total = findViewById(R.id.textView12);
         first_card_front = findViewById(R.id.card_front2);
         first_card_back = findViewById(R.id.card_back2);
         sec_card_front = findViewById(R.id.card_front3);
@@ -197,6 +198,7 @@ public class Flashcards extends AppCompatActivity {
         ArrayList<Model_Questionnaire> questionnaires = new ArrayList<>();
         flashcardsRef.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -206,6 +208,7 @@ public class Flashcards extends AppCompatActivity {
                                 Model_Questionnaire m = new Model_Questionnaire(question, answer);
                                 questionnaires.add(m);
                             }
+                            total.setText("of " + questionnaires.size());
                             handleResult(questionnaires);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

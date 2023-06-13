@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,18 +56,26 @@ public class Home extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
         }
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        // Get screen width
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        // Set dialog width to 80% of screen width
+        dialog.getWindow().setLayout((int) (width * 0.8), ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationn;
+
+        // Repeat for the second dialog
         dialog2 = new Dialog(Home.this);
         dialog2.setContentView(R.layout.confirm_lock_dialog);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             dialog2.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
         }
         dialog2.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
-        dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog2.getWindow().setLayout((int) (width * 0.8), ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog2.setCancelable(false);
-        dialog2.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog2.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationn;
+
         drawerLayout = findViewById(R.id.drawer_layout);
         item1 = findViewById(R.id.medsurg);
         item2 = findViewById(R.id.informatics);
