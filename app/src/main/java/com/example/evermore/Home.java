@@ -63,7 +63,7 @@ public class Home extends AppCompatActivity {
         // Set dialog width to 80% of screen width
         dialog.getWindow().setLayout((int) (width * 0.8), ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationn;
+        //dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationn;
 
         // Repeat for the second dialog
         dialog2 = new Dialog(Home.this);

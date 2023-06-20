@@ -85,29 +85,30 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCalc"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:background="@drawable/calc_btn_bg"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintEnd_toStartOf="@+id/btnClear"
+        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volume"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.133" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnClear"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/calc_btn_bg"
         android:text="Clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volume"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.133" />
 
     <TextView
         android:id="@+id/tfRate"
